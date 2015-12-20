@@ -75,13 +75,13 @@
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
-    height: 3.36in;
+    height: 3.36667in;
     padding: .2in .15in;
     font-size:.85em;
-    width: 8in;
+    width: 100%;
     border-bottom: 1px dashed #444;
   }
-  .cert:nth-of-type(3n) {
+  .cert.break {
     page-break-after: always;
   }
 }
