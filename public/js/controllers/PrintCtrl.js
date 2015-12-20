@@ -122,6 +122,7 @@ app
   $scope.certDated = "Dec. 24, "+year;
   $http.get('/api/family').success(function(data){
     $scope.families = $filter('orderBy')(data, "['rural', 'l_name1']")
+    console.log(data, $scope.families);
   });
   $scope.getConsecutiveIndex = function(parentIndex, $index) {
     var total = 1;

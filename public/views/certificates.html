@@ -5,7 +5,7 @@
   <span ng-repeat="family in families">
     <span ng-init="parentIndex = $index"></span>
     <div class="cert" ng-repeat="child in family.children" ng-class="{'break': getConsecutiveIndex(parentIndex, $index)%3===0&&$index!==0}">
-      <div class="certno col-xs-12"><strong class="pull-right">{{family.key}}</strong></div>
+      <div class="certno col-xs-12"><strong class="pull-right"><a href="#/edit/{{family.key}}">{{family.key}}</a></strong></div>
       <div class="col-xs-8">
         This certificate dated <strong>{{certDated}}</strong> and issued for <strong>{{child.name}}</strong> (Age {{child.age + " " + child.age_type}})<br>
         can be redeemed at any retail store in Greensburg, Indiana that agrees to honor this certificate for clothing, wearing apparel, or shoes for the individual named above in the maximum amount of
