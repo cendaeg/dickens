@@ -121,15 +121,6 @@ app
     $scope.validUntil = "January 31, "+(year+1);
     $scope.certDated = "Dec. 24, "+year;
     $http.get('/api/family').success(function(data){
-        var children = [];
-        for(var i=0;i<data.length;i++) {
-            for(var j=0;j<data[i].children.length;j++) {
-                console.log(data[i]);
-                data[i].children[j].added = data[i].added;
-                data[i].children[j].key = data[i].key;
-                children.push(data[i].children[j]);
-            }
-        }
-        $scope.children = children;
+        $scope.families = data;
     });
 }]);
