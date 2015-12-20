@@ -1,0 +1,42 @@
+<div class="print-hidden container" style="margin-bottom:10px;">
+<div class="col-xs-6">
+  <label>From:</label>
+  <div class="input-group col-sm-6">
+    <input type="text" class="form-control" style="display:none;" datepicker-popup="{{format}}" ng-model="dt1" is-open="opened1" ng-change="updateList()" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+    <input type="text" class="form-control" ng-value="dt1 | date:'MM/dd/yyyy'"/>
+    <span class="input-group-btn">
+      <button type="button" class="btn btn-default" ng-click="open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+    </span>
+  </div><!-- /input-group -->
+  <br />
+  <label>To:</label>
+  <div class="input-group col-sm-6">
+    <input type="text" class="form-control" style="display:none;" datepicker-popup="{{format}}" ng-model="dt2" is-open="opened2" ng-change="updateList()" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+    <input type="text" class="form-control" ng-value="dt2 | date:'MM/dd/yyyy'"/>
+    <span class="input-group-btn">
+      <button type="button" class="btn btn-default" ng-click="open2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+    </span>
+  </div><!-- /input-group -->
+</div><!-- /.col-lg-6 -->
+</div>
+<div class="print container">
+  <div class="boxParent" ng-repeat="family in families | filter:filterDate">
+    <div class="boxLabel" ng-repeat="i in [1,2,3,4]">
+      <h3 class="pull-right">{{family.rural?"Rural":"City"}}</h3>
+      <div class="clearfix"></div>
+      <h4>{{family.f_name1+" "+family.l_name1}} <span ng-if="family.f_name2">&amp; {{family.f_name2+" "+family.l_name2}}</span></h4>
+      <h5>{{family.address}}</h5>
+      <h5 ng-if="family.apt_lot_po">{{family.apt_lot_po}}</h5>
+      <h5>{{family.city}} IN {{family.zip}}</h5>
+      <h5>Phone #1: {{family.phone1}}</h5> 
+      <h5>Phone #2: {{family.phone2}}</h5> 
+      <hr>
+      <h4>Alt. Contact</h4>
+      <h5 ng-if="family.alt_adult">{{family.alt_adult}}</h5>
+      <h5 ng-if="family.alt_phone">{{family.alt_phone}}</h5>
+      <br>
+      <strong>Notes:</strong> {{family.notes}}
+      <hr>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+{
+  "appSettings": {
+    "port": 8080,
+    "public": {
+      "certPrice1": {
+        "name": "Forty Dollars and Zero Cents",
+        "num": 40
+      },
+      "certPrice2": {
+        "num": 60,
+        "name": "Sixty Dollars and Zero Cents"
+      },
+      "certPrice3": {
+        "name": "Seventy Five Dollars and Zero Cents",
+        "num": 75
+      }
+    }
+  }
+}

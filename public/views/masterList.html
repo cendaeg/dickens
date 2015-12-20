@@ -1,0 +1,8 @@
+<div class="print container">
+    <a class="btn btn-default" href="/masterlist.csv">Save to Excel</a><br /><br />
+    <a class="btn btn-default" href="/childlist.csv">Children to Excel</a><br /><br />
+    <table class="table">
+    <tr><th>Key</th><th>First Name</th><th>Last Name</th><th>Phone</th><th>Alt. Phone</th><th>Address</th><th>City</th><th>Zip</th><th>Approved</th><th>Rural</th><th>Food For</th><th>Notes</th><th>Date Added</th></tr>
+    <tr ng-repeat="family in families"><td>{{family.key}}</td><td>{{family.f_name}}</td><td>{{family.l_name}}</td><td>{{family.phone}}</td><td>{{family.alt_phone}}</td><td>{{family.address}}<span ng-if="family.apt_lot_po"> {{family.apt_lot_po}}</span></td><td>{{family.city}}</td><td>{{family.zip}}</td><td>{{family.approved?"Yes":"No"}}</td><td>{{family.rural?"Yes":"No"}}</td><td>{{family.food}}</td><td>{{family.notes}}</td><td>{{family.added}}</td></tr>
+    </table>
+</div>

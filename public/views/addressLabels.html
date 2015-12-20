@@ -1,0 +1,29 @@
+<div class="print-hidden container" style="margin-bottom:10px;">
+  <div class="col-xs-6">
+  <label>From:</label>
+    <div class="input-group col-sm-6">
+      <input type="text" class="form-control" style="display:none;" datepicker-popup="{{format}}" ng-model="dt1" is-open="opened1" ng-change="updateList()" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+      <input type="text" class="form-control" ng-value="dt1 | date:'MM/dd/yyyy'"/>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </div><!-- /input-group -->
+    <br />
+    <label>To:</label>
+    <div class="input-group col-sm-6">
+      <input type="text" class="form-control" style="display:none;" datepicker-popup="{{format}}" ng-model="dt2" is-open="opened2" ng-change="updateList()" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+      <input type="text" class="form-control" ng-value="dt2 | date:'MM/dd/yyyy'"/>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="open2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div>
+<div class="print container">
+  <span class="address-label" ng-repeat="label in labels | filter:filterDate">
+    <strong>{{label.f_name1+" "+label.l_name1}} <span ng-if="label.f_name2">&amp; {{label.f_name2+" "+label.l_name2}}</span></strong><br>
+    {{label.address}}<br />
+    <span ng-if="label.apt_lot_po">{{label.apt_lot_po}}<br /></span>
+    {{label.city}}, IN {{label.zip}}
+  </span>
+</div>

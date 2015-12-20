@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>Settings</h2>
+    <form class="form">
+        <h3>Certificates</h3>
+        <div class="form-group col-sm-6 form-inline">
+            <h4>Under 12 Certificate</h4>
+            <div class="form-group">
+                <label>Name: </label> <input type="text" class="form-control" ng-model="settings.certPrice1.name" />
+                <label>Number: </label> <input type="number" class="form-control" ng-model="settings.certPrice1.num" />
+            </div>
+            <h4>13-15 Certificate</h4>
+            <div class="form-group">
+                <label>Name: </label> <input type="text" class="form-control" ng-model="settings.certPrice2.name" />
+                <label>Number: </label> <input type="number" class="form-control" ng-model="settings.certPrice2.num" />
+            </div>
+            <h4>16-18 Certificate</h4>
+            <div class="form-group">
+                <label>Name: </label> <input type="text" class="form-control" ng-model="settings.certPrice3.name" />
+                <label>Number: </label> <input type="number" class="form-control" ng-model="settings.certPrice3.num" />
+            </div>
+        </div>
+        <div class="form-group col-sm-12">
+            <button class="btn btn-success" ng-click="updateSettings()">Save Settings</button>
+        </div>
+    </div>

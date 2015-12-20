@@ -1,0 +1,29 @@
+<div class="container">
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label class="col-sm-1 control-label">Search:</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" ng-model="search.$" />
+      </div>
+      <div class="btn-group col-sm-2" role="group">
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-default active locButton">
+            <input type="radio" checked ng-model="search.rural" value="" name="loc"/>
+            All
+          </label>
+          <label class="btn btn-default locButton">
+            <input type="radio" ng-model="search.rural" value="true" name="loc"/>
+            Rural
+          </label>
+          <label class="btn btn-default locButton">
+            <input type="radio" ng-model="search.rural" value="false" name="loc"/>
+            City
+          </label>
+        </div>
+      </div>
+    </div>
+  </form>
+  <ul>
+    <li ng-repeat="family in editList | filter:search"><a ng-href="#/edit/{{family.key}}">{{family.f_name1+" "+family.l_name1}}</a></li>
+  </ul>
+</div>

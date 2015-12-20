@@ -1,0 +1,87 @@
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.address-label {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  font-size: 12px;
+  width: 2.7in;
+  height: 1.05in;
+  overflow: hidden;
+  padding: .135in .3in;
+  margin: 0 .0625in;
+  float: left;
+}
+
+.boxLabel {
+  /*
+  Width: 2(3.75)+.25+2(.375)
+  Left: .375-.16 = .215
+  Right: .25/2 =
+  */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 3.75in;
+  vertical-align: top;
+  height: 4.75in;
+  margin:.125in .1525in;
+  padding: .135in .5in;
+  float: left;
+}
+.boxParent {
+  page-break-after: always;
+}
+
+@media print {
+  * {
+    margin:0;
+    padding:0;
+  }
+  html, body {
+    width:8.5in;
+    margin:0;
+    padding:0;
+  }
+  .print-hidden {
+    display:none;
+  }
+  .print {
+    margin:0;
+    padding:0;
+  }
+  @page {
+    height: 11in;
+    width:8.5in;
+    margin:0;
+    padding:0;
+  }
+  .fullSheet {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    height: 10in;
+    width: 8.2in;
+    page-break-after: always;
+    position:relative;
+  }
+  .cert {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 3.36in;
+    padding: .2in .15in;
+    font-size:.85em;
+    width: 8in;
+    border-bottom: 1px dashed #444;
+  }
+  .cert:nth-of-type(3n) {
+    page-break-after: always;
+  }
+}

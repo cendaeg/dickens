@@ -1,0 +1,78 @@
+<div class="print-hidden container">
+  <div class="col-xs-6">
+    <label>From:</label>
+    <div class="input-group col-sm-6">
+      <input type="text" class="form-control" style="display:none;" datepicker-popup="{{format}}" ng-model="dt1" is-open="opened1" ng-change="updateList()" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+      <input type="text" class="form-control" ng-value="dt1 | date:'MM/dd/yyyy'"/>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </div><!-- /input-group -->
+    <br />
+    <label>To:</label>
+    <div class="input-group col-sm-6">
+      <input type="text" class="form-control" style="display:none;" datepicker-popup="{{format}}" ng-model="dt2" is-open="opened2" ng-change="updateList()" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+      <input type="text" class="form-control" ng-value="dt2 | date:'MM/dd/yyyy'"/>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="open2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div>
+<br />
+<div class="print container">
+  <span ng-repeat="page in pages | filter:filterDate">
+    <section class="fullSheet container" ng-repeat="i in [1,2,3]">
+      <div class="col-xs-6">
+        <h2>{{page.f_name1+" "+page.l_name1}} <span ng-if="page.f_name2">&amp; {{page.f_name2+" "+page.l_name2}}</span></h2>
+        <h3>{{page.address}}</h3>
+        <h3 ng-if="page.apt_lot_po">{{page.apt_lot_po}}</h3>
+        <h3>{{page.city}} IN {{page.zip}}</h3>
+        <h4>Phone #1: {{page.phone1}}</h4> 
+        <h4 ng-if="page.phone2">Phone #2: {{page.phone2}}</h4>
+        <hr>
+        <h4>Others in Household</h4>
+        <ul class="others">
+          <li ng-repeat="other in page.others">
+            <h5>{{other.name}} - {{other.age}}</h5>
+          </li>
+        </ul>
+        <hr>
+        <h4>Children:</h4>
+        <ul class="children">
+          <li ng-repeat="child in page.children">
+            <h5>{{child.name}} - {{child.age +" "+child.age_type}} - {{child.gender}}</h5>
+            <strong>Shirt Size:</strong> {{child.shirt_size}}<br /> 
+            <p ng-if="child.notes"><strong>Notes:</strong>
+            {{child.notes}}</p>
+          </li>
+        </ul>
+        <hr>
+        <h4>In Box:</h4>
+        <ul style="list-style:none;font-size:20px">
+          <li>[&nbsp;&nbsp;&nbsp;] Doll</li>
+          <li>[&nbsp;&nbsp;&nbsp;] Truck</li>
+          <li>[&nbsp;&nbsp;&nbsp;] Game</li>
+          <li>[&nbsp;&nbsp;&nbsp;] Ball</li>
+          <li>[&nbsp;&nbsp;&nbsp;] Crayons</li>
+          <li>[&nbsp;&nbsp;&nbsp;] Coloring Book</li>
+          <li>[&nbsp;&nbsp;&nbsp;] Detergent</li>
+          <li>[&nbsp;&nbsp;&nbsp;] Toiletries</li>
+          <li>[&nbsp;&nbsp;&nbsp;] Paper Products</li>
+        </ul>
+      </div>
+      <div class="col-xs-6">
+        <h2 class="pull-right">{{page.rural?"Rural":"City"}}</h2>
+        <div class="clearfix"></div>
+        <strong>Notes:</strong>
+        {{page.notes}}
+        <hr>
+        <h4>Alt. Contact</h4>
+        <h5>{{page.alt_adult}}</h5>
+        <h5>{{page.alt_phone}}</h5>
+        <hr>
+      </div>
+      <h2 style="position:absolute;bottom:0;right:5%;">[&nbsp;&nbsp;&nbsp;] Food For: {{page.food}}</h2>
+    </section>
+  </span>
+</div>

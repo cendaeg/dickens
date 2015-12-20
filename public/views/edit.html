@@ -1,0 +1,254 @@
+<div class="container">
+  <span id="alerts">
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"><span ng-bind-html="alert.msg"></span></alert>
+  </span>
+  <form ng-submit="updateFamily()" class="form-horizontal">
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-8">
+        <button type="submit" class="btn btn-default">Save Family</button>
+        <a ng-click="removeFamily(editFamily)" class="btn btn-danger">Delete Family</a>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="key" class="col-sm-4 control-label">Key:</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control disabled key" name="key" ng-value="editFamily.key" disabled />
+        </div>
+      </div>
+      <h4>Adult #1</h4>
+      <div class="form-group">
+        <label for="f_name" class="col-sm-4 control-label">First Name:</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control f_name" ng-model="editFamily.f_name1" name="f_name1" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="l_name" class="col-sm-4 control-label">Last Name:</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control l_name" ng-model="editFamily.l_name1" name="l_name1" required />
+        </div>
+      </div>
+      <h4>Adult #2</h4>
+      <div class="form-group">
+        <label for="f_name" class="col-sm-4 control-label">First Name:</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control f_name" ng-model="editFamily.f_name2" name="f_name2" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="l_name" class="col-sm-4 control-label">Last Name:</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control l_name" ng-model="editFamily.l_name2" name="l_name2" />
+        </div>
+      </div>
+      <h4>Address</h4>
+      <div class="form-group">
+        <label for="address" class="col-sm-4 control-label">Address:</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="address" ng-model="editFamily.address" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="apt_lot_po" class="col-sm-4 control-label">Apt./Lot/PO #:</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="apt_lot_po" ng-model="editFamily.apt_lot_po"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="city" class="col-sm-4 control-label">City:</label>
+        <div class="col-sm-8">
+          <div class="col-sm-6"><strong>Current City:</strong> {{editFamily.city}}</div>
+          <div class="col-sm-6">
+            <strong>Change City:</strong>
+            <select class='form-control' ng-model="citySelect" ng-options="c.city for c in cities" ng-change="setCity()">
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="zip" class="col-sm-4 control-label">Zip:</label>
+        <div class="col-sm-8">
+          <input type="number" class="form-control disabled" disabled name="zip" ng-model="editFamily.zip" required/>
+        </div>
+      </div>
+      <h4>Contact</h4>
+      <div class="form-group">
+        <label for="phone" class="col-sm-4 control-label">Phone #1:</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="phone" ng-change="updatePhone(['editFamily','phone1'])" ng-model="editFamily.phone1" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phone" class="col-sm-4 control-label">Phone #2:</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="phone" ng-change="updatePhone(['editFamily','phone2'])" ng-model="editFamily.phone2" />
+        </div>
+      </div>
+      <h4>Alternate</h4>
+      <div class="form-group">
+        <label for="alt_adult" class="col-sm-4 control-label">Alt. Adult:</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="alt_adult" ng-model="editFamily.alt_adult" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="alt_phone" class="col-sm-4 control-label">Alt. Phone:</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" ng-change="updatePhone(['editFamily','alt_phone'])" name="alt_phone" ng-model="editFamily.alt_phone" />
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-8">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="rural" ng-model="editFamily.rural" /> Rural
+            </label>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="form-group"> -->
+      <!--   <div class="col-sm-offset-4 col-sm-8"> -->
+      <!--     <div class="checkbox"> -->
+      <!--       <label> -->
+      <!--         <input type="checkbox" name="toys" ng-model="editFamily.toys" /> Toys -->
+      <!--       </label> -->
+      <!--     </div> -->
+      <!--   </div> -->
+      <!-- </div> -->
+      <!-- <div class="form-group"> -->
+      <!--   <div class="col-sm-offset-4 col-sm-8"> -->
+      <!--     <div class="checkbox"> -->
+      <!--       <label> -->
+      <!--         <input type="checkbox" name="certificate" ng-model="editFamily.certificate" /> Certificate -->
+      <!--       </label> -->
+      <!--     </div> -->
+      <!--   </div> -->
+      <!-- </div> -->
+      <div class="form-group">
+        <label for="food" class="col-sm-4 control-label">Food For:</label>
+        <div class="col-sm-8">
+          <input type="number" class="form-control" name="food" ng-model="editFamily.food" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="notes" class="col-sm-4 control-label">Notes:</label>
+        <div class="col-sm-8">
+          <textarea class="form-control" name="notes" ng-model="editFamily.notes"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="children col-sm-12">
+      <h4>Children</h4>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-8">
+          <button type="button" ng-click="addChild()" class="btn btn-default">Add Child</button>
+        </div>
+      </div>
+      <div class="child" ng-repeat="child in editFamily.children track by $index">
+        <div class="form-group col-sm-6">
+          <label for="child_name" class="col-sm-4 control-label">Name:</label>
+          <div class="col-sm-8">
+            <input class="form-control" name="child_name" ng-model="child.name" required/>
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label for="child_age" class="col-sm-4 control-label">Age:</label>
+          <div class="col-sm-5">
+            <input class="form-control" name="child_age" ng-model="child.age" required/>
+          </div>
+          <div class="col-sm-3">
+            <select class="form-control" ng-model="child.age_type" required>
+              <option value="yrs" selected>Years</option>
+              <option value="mos">Months</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label for="child_gender" class="col-sm-4 control-label">Gender:</label>
+          <div class="col-sm-8">
+            <select class="form-control" ng-model="child.gender" required>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label for="child_shirt_size" class="col-sm-4 control-label">Shirt Size:</label>
+          <div class="col-sm-8">
+            <select class="form-control" ng-model="child.shirt_size" required>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+              <option value="XXL">XXL</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label for="child_school" class="col-sm-4 control-label">School:</label>
+          <div class="col-sm-8">
+            <input class="form-control" name="child_school" ng-model="child.school" required/>
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label for="child_notes" class="col-sm-4 control-label">Notes:</label>
+          <div class="col-sm-8">
+            <textarea class="form-control" name="child_notes" ng-model="child.notes"></textarea>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <label class="col-sm-4 control-label">Options:</label>
+          <div class="col-sm-8">
+            <button class="btn btn-danger" ng-click="remove(editFamily.children, $index)">Remove Child</button>
+          </div>
+        </div>
+        <hr />
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="others col-sm-12">
+      <h4>Others In Household</h4>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-8">
+          <button type="button" ng-click="addOther()" class="btn btn-default">Add Other in Household</button>
+        </div>
+      </div>
+      <div class="other" ng-repeat="other in editFamily.others track by $index">
+        <div class="form-group col-sm-6">
+          <label for="other_name" class="col-sm-4 control-label">Name:</label>
+          <div class="col-sm-8">
+            <input class="form-control" name="other_name" ng-model="other.name" required/>
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label for="other_age" class="col-sm-4 control-label">Age:</label>
+          <div class="col-sm-5">
+            <input class="form-control" name="other_age" ng-model="other.age" required/>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <label class="col-sm-4 control-label">Options:</label>
+          <div class="col-sm-8">
+            <button class="btn btn-danger" ng-click="remove(newFamily.others, $index)">Remove Other</button>
+          </div>
+        </div>
+        <hr />
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <br />
+    <br />
+    <div class="col-sm-12">
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-8">
+          <button type="submit" class="btn btn-default">Save Family</button>
+          <a ng-click="removeFamily(editFamily)" class="btn btn-danger">Delete Family</a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,75 @@
+<div class="print-hidden container">
+  <div class="col-xs-6">
+    <label>From:</label>
+    <div class="input-group col-sm-6">
+      <input type="text" class="form-control" style="display:none;" datepicker-popup="{{format}}" ng-model="dt1" is-open="opened1" ng-change="updateList()" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+      <input type="text" class="form-control" ng-value="dt1 | date:'MM/dd/yyyy'"/>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </div><!-- /input-group -->
+    <br />
+    <label>To:</label>
+    <div class="input-group col-sm-6">
+      <input type="text" class="form-control" style="display:none;" datepicker-popup="{{format}}" ng-model="dt2" is-open="opened2" ng-change="updateList()" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+      <input type="text" class="form-control" ng-value="dt2 | date:'MM/dd/yyyy'"/>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="open2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div>
+<br />
+<div class="print container">
+  <div class="cert" ng-repeat="child in children | filter:filterDate">
+    	<div class="certno col-xs-12"><strong class="pull-right">{{child.key}}</strong></div>
+    <div class="col-xs-8">
+      This certificate dated <strong>{{certDated}}</strong> and issued for <strong>{{child.name}}</strong> (Age {{child.age + " " + child.age_type}})<br>
+      can be redeemed at any retail store in Greensburg, Indiana that agrees to honor this certificate for clothing, wearing apparel, or shoes for the individual named above in the maximum amount of
+      <div class="text-center">
+        <strong>
+          <span ng-if="child.age_type=='mos' || child.age<=12">
+            {{settings.certPrice1.name}} (${{settings.certPrice1.num.toFixed(2)}})
+          </span>
+          <span ng-if="child.age_type!='mos' && child.age>12 && child.age<16">
+            {{settings.certPrice2.name}} (${{settings.certPrice2.num.toFixed(2)}})
+          </span>
+          <span ng-if="child.age_type!='mos' && child.age>15">
+            {{settings.certPrice3.name}} (${{settings.certPrice3.num.toFixed(2)}})
+          </span>
+        </strong>
+      </div>
+      Items purchased by this certificate cannot be exchanged for cash. Exchanges for mechandise only will be according to the store's policies.
+      <br>
+      <strong class="col-xs-6">This certificate is not redeemable for cash to recipient and is not valid after {{validUntil}}. Merchant can redeem at Greensburg Daily News.</strong>
+      <strong class="col-xs-6">
+        DAILY NEWS CHEER FUND<br>
+        <img src="/sig.jpg" style="height: 50px"><br>
+        Signature<br>
+        _______________________<br>
+        (Parent/Guardian Signature if minor)
+      </strong>
+    </div>
+    <div class="col-xs-4">
+      <strong>A. </strong>Amount of Certificate
+      <span class="pull-right">
+        <span ng-if="child.age_type=='mos' || child.age<=12">
+          ${{settings.certPrice1.num.toFixed(2)}}
+        </span>
+        <span ng-if="child.age_type!='mos' && child.age>12 && child.age<16">
+          ${{settings.certPrice2.num.toFixed(2)}}
+        </span>
+        <span ng-if="child.age_type!='mos' && child.age>15">
+          ${{settings.certPrice3.num.toFixed(2)}}
+        </span>
+      </span>
+      <br><br>
+      <strong>B. </strong>Less Mdse. Purchased <span class="pull-right">$_________</span><br><br>
+      <strong>C. </strong>Balance (if any) due recipient. Store will issue a pink certificate for this amount to the same person. <span class="pull-right">$_________</span><br><br>
+      <div style="text-align:center;">____________________________________<br>Name of Store Cashing Cert.</div>
+      BY
+      <div style="text-align:center;">____________________________________</div>
+      This certificate is not valid for less than $1.00.
+    </div>
+  </div>
+</div>
