@@ -121,7 +121,7 @@ app
   $scope.validUntil = "January 31, "+(year+1);
   $scope.certDated = "Dec. 24, "+year;
   $http.get('/api/family').success(function(data){
-    $scope.families = $filter('orderBy')(data, "['rural', 'l_name2']")
+    $scope.families = $filter('orderBy')(data, "['rural', 'l_name1']")
   });
   $scope.getConsecutiveIndex = function(parentIndex, $index) {
     var total = 1;
