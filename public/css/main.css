@@ -15,7 +15,7 @@
   float: left;
 }
 
-.address-label:first-child {
+.address-label:first-child, .address-label:nth-child(2), .address-label:nth-child(3) {
   margin-top: 0.5in;
 }
 
