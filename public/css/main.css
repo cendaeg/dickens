@@ -6,11 +6,11 @@ nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   display: block;
-  font-size: 12px;
+  font-size: 11px;
   width: 2.625in;
   height: 1in;
   overflow: hidden;
-  padding: .1in .3in;
+  padding: .05in .3in;
   margin: 0 .0625in;
   float: left;
 }
