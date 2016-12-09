@@ -15,7 +15,7 @@ nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
   float: left;
 }
 
-.address-label:nth-of-type(29n+1), .address-label:nth-of-type(29n+2), .address-label:nth-of-type(29n+3) {
+.address-label:nth-of-type(30n+1), .address-label:nth-of-type(30n+2), .address-label:nth-of-type(30n+3) {
   margin-top: 0.5in;
 }
 
@@ -105,7 +105,7 @@ nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
     width: 100%;
     border-bottom: 1px dashed #444;
   }
-  .address-label:nth-of-type(29n+1),
+  .address-label:nth-of-type(30n+1),
   .cert.break {
     page-break-after: always;
   }
