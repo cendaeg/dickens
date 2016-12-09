@@ -15,6 +15,27 @@
   float: left;
 }
 
+.print {
+  height: 600px;
+  width: 100%;
+  background: #444;
+  overflow: scroll;
+}
+.fullSheet {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    height: 10in;
+    width: 8.2in;
+    padding: 0.15in 0.5in;
+    background: #fff;
+    page-break-after: always;
+    position:relative;
+    margin: 20px auto;
+  }
+
 .boxLabel {
   /*
   Width: 2(3.75)+.25+2(.375)
@@ -25,14 +46,18 @@
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
-  width: 3.75in;
+  width: 4.25in;
   vertical-align: top;
-  height: 4.75in;
-  margin:.125in .1525in;
+  height: 5.5in;
+  //margin:.125in .1525in;
   padding: .135in .5in;
   float: left;
 }
 .boxParent {
+  height: 11in;
+  width: 8.5in;
+  margin: 20px auto;
+  background: #fff;
   page-break-after: always;
 }
 
@@ -52,6 +77,8 @@
   .print {
     margin:0;
     padding:0;
+    background: #fff;
+    overflow: visible;
   }
   @page {
     height: 11in;
@@ -59,16 +86,9 @@
     margin:0;
     padding:0;
   }
-  .fullSheet {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    display: block;
-    height: 10in;
-    width: 8.2in;
-    page-break-after: always;
-    position:relative;
+  .boxParent {
+    margin:0;
+    padding:0;
   }
   .cert {
     -webkit-box-sizing: border-box;
@@ -83,5 +103,8 @@
   }
   .cert.break {
     page-break-after: always;
+  }
+  .fullSheet {
+    margin: 0;
   }
 }

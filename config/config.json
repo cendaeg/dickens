@@ -3,8 +3,8 @@
     "port": 8080,
     "public": {
       "certPrice1": {
-        "name": "Fifty Dollars and Zero Cents",
-        "num": 50
+        "name": "Forty Dollars and Zero Cents",
+        "num": 40
       },
       "certPrice2": {
         "num": 60,

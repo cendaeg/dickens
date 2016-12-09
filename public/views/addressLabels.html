@@ -21,9 +21,9 @@
 </div>
 <div class="print container">
   <span class="address-label" ng-repeat="label in labels | filter:filterDate">
-    <strong>{{label.f_name1+" "+label.l_name1}} <span ng-if="label.f_name2">&amp; {{label.f_name2+" "+label.l_name2}}</span></strong><br>
+    <strong>{{label.f_name1+" "+label.l_name1}}</strong><br>
     {{label.address}}<br />
     <span ng-if="label.apt_lot_po">{{label.apt_lot_po}}<br /></span>
-    {{label.city}}, IN {{label.zip}}
-  </span>
+      {{label.city}}, IN {{label.zip}}
+    </span>
 </div>
