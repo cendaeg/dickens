@@ -15,6 +15,10 @@
   float: left;
 }
 
+.address-label:first-child {
+  margin-top: 0.5in;
+}
+
 .print {
   height: 600px;
   width: 100%;
